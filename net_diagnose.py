@@ -18,13 +18,7 @@ def init():
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(11, GPIO.OUT)
 
-init()
-
-count = 0
-while (count < 9):
-   #print 'The count is:', count
-   #count = count + 1
-
+def check_net():
    return1=os.system('ping www.baidu.com -c 1')
    if return1:
        print 'ping fail'
@@ -32,3 +26,13 @@ while (count < 9):
    else:
        print 'ping ok'
        bibi_short('')
+       time.sleep(2)
+
+
+init()
+
+count = 0
+while (count < 9):
+   #print 'The count is:', count
+   #count = count + 1
+   check_net()
