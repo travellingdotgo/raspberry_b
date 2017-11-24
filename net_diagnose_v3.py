@@ -16,7 +16,7 @@ def bibi_short(args):
     time.sleep(1)
 
 def bibi_loop(args):
-    for i in range(1, args):
+    for i in range(1, 6):
         GPIO.output(11, GPIO.HIGH)
         time.sleep(0.1)
         GPIO.output(11, GPIO.LOW)
@@ -40,13 +40,12 @@ def init():
 
 def check_net():
    start = time.time()
-   #return1=os.system('ping www.baidu.com -c 1 -W 3') 202.101.172.35
-   return1=os.system('ping www.baidu.com -c 1 -W 3')
+   return1=os.system('ping www.baidu.com -c 1 -w 1000')
    elapsed = (time.time() - start)
    print("elapsed: ",elapsed)
    if return1:
        print 'ping fail'
-       bibi_loop(10)
+       bibi_loop('')
        time.sleep(2)
    else:
        print 'ping ok'

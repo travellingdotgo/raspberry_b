@@ -40,7 +40,6 @@ def init():
 
 def check_net():
    start = time.time()
-   #return1=os.system('ping www.baidu.com -c 1 -W 3') 202.101.172.35
    return1=os.system('ping www.baidu.com -c 1 -W 3')
    elapsed = (time.time() - start)
    print("elapsed: ",elapsed)

@@ -2,25 +2,11 @@ import os
 import RPi.GPIO as GPIO
 import time
 
-
-def bibi_timed(args):
-    GPIO.output(11, GPIO.HIGH)
-    time.sleep(args)
-    GPIO.output(11, GPIO.LOW)
-    time.sleep(1)
-
 def bibi_short(args):
     GPIO.output(11, GPIO.HIGH)
     time.sleep(0.05)
     GPIO.output(11, GPIO.LOW)
     time.sleep(1)
-
-def bibi_loop(args):
-    for i in range(1, args):
-        GPIO.output(11, GPIO.HIGH)
-        time.sleep(0.1)
-        GPIO.output(11, GPIO.LOW)
-        time.sleep(0.1)
 
 def bibi_long(args):
     GPIO.output(11, GPIO.HIGH)
@@ -39,23 +25,19 @@ def init():
     GPIO.setup(11, GPIO.OUT)
 
 def check_net():
-   start = time.time()
-   #return1=os.system('ping www.baidu.com -c 1 -W 3') 202.101.172.35
-   return1=os.system('ping www.baidu.com -c 1 -W 3')
-   elapsed = (time.time() - start)
-   print("elapsed: ",elapsed)
+   return1=os.system('ping www.baidu.com -c 1 -w 1000')
+   #print return1
    if return1:
        print 'ping fail'
-       bibi_loop(10)
-       time.sleep(2)
+       bibi_long3s('')
    else:
        print 'ping ok'
-       bibi_timed(elapsed/5.0)
+       bibi_short('')
        time.sleep(2)
 
 
 init()
-bibi_timed(1)
+bibi_long3s('')
 
 count = 0
 while (count < 9):
